@@ -35,6 +35,8 @@ window.Modernizr = (function( window, document, undefined ) {
 
     docElement = document.documentElement,
 
+    classNamespace = docElement.getAttribute('data-modernizr-namespace') || '',
+
     /**
      * Create our "modernizr" element that we do most feature tests on.
      */
@@ -1376,7 +1378,7 @@ window.Modernizr = (function( window, document, undefined ) {
     docElement.className = docElement.className.replace(/(^|\s)no-js(\s|$)/, '$1$2') +
 
                             // Add the new classes to the <html> element.
-                            (enableClasses ? ' js ' + classes.join(' ') : '');
+                            + (enableClasses ? ' ' + [ classNamespace + 'js' ].concat(classes).join(' ' + classNamespace) : '');
     /*>>cssclasses*/
 
     return Modernizr;
